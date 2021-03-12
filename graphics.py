@@ -12,9 +12,9 @@ class ModelPlots:
         self.save_file = save_file
         self.name = name
 
-    def show_feature_dep_chan(self, channels, data, label):
+    def show_feature_dep_chan(self, x_axis, data, label):
         fig, axes = plt.subplots(nrows=1, ncols=1, figsize=FIGSIZE, dpi=self.dpi)
-        axes.plot(np.arange(1, channels + 1, 1), data, linestyle='--', marker="o", color="blue",
+        axes.plot(x_axis, data, linestyle='--', marker="o", color="blue",
                   label="{} depends on number of channels".format(label))
         axes.set_ylabel(label)
         axes.set_xlabel('Number of channels')

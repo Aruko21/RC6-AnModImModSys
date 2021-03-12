@@ -1,3 +1,5 @@
+import numpy as np
+
 import models
 import graphics as graph
 
@@ -18,8 +20,10 @@ def task1_solve(Tc, Ts):
         channels_busy.append(model.busy_operators())
         busy_coefs.append(model.busy_coefficient())
 
-    plots.show_feature_dep_chan(channels=channels, data=denials, label="Probability of denial")
-    plots.show_feature_dep_chan(channels=channels, data=channels_busy, label="Math expect of busy operators")
-    plots.show_feature_dep_chan(channels=channels, data=busy_coefs, label="Busy channels coefficient")
+    channels_range = np.arange(1, channels + 1, 1)
+
+    plots.show_feature_dep_chan(x_axis=channels_range, data=denials, label="Probability of denial")
+    plots.show_feature_dep_chan(x_axis=channels_range, data=channels_busy, label="Math expect of busy operators")
+    plots.show_feature_dep_chan(x_axis=channels_range, data=busy_coefs, label="Busy channels coefficient")
 
     return channels
