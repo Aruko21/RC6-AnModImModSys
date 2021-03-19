@@ -29,10 +29,13 @@ class ModelUnlimitedQueue(ModelWithoutQueue):
         else:
             return 0
 
+    def is_a_coef_valid(self):
+        return self.client_i / (self._channels * self.handling_i) < 1.
+
     def busy_operators(self):
         prefix_coef = self.client_i / (self._channels * self.handling_i)
         summary = np.sum([i * self.get_pi_arg(i) for i in range(1, self._channels + 1)])
-        summary += self.channels * prefix_coef / (1 - prefix_coef)
+        summary += self._channels * self.get_pi_arg(self._channels) * prefix_coef / (1 - prefix_coef)
         return self.get_p0() * summary
 
     def queue_prob(self):

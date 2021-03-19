@@ -4,7 +4,7 @@ import models
 import graphics as graph
 
 
-def task1_solve(Tc, Ts):
+def task1_1_solve(Tc, Ts):
     channels = 1
     model = models.ModelWithoutQueue(client_t=Tc, handling_t=Ts, channels=channels)
     plots = graph.ModelPlots(name="Model without queue")

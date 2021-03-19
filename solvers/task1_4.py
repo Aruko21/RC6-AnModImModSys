@@ -4,10 +4,11 @@ import models
 import graphics as graph
 
 
-def task3_solve(Tc, Ts, channels_num):
-    channels_number_range = np.arange(1, channels_num + 1, 1)
-    model = models.ModelUnlimitedQueue(client_t=Tc, handling_t=Ts, channels=1)
+def task1_4_solve(Tc, Ts, Tw, channels_num):
+    model = models.ModelQueueLeavings(client_t=Tc, handling_t=Ts, leaving_t=Tw, channels=1)
     plots = graph.ModelPlots(name="Model with limited queue")
+
+    channels_number_range = np.arange(1, channels_num + 1, 1)
 
     channels_busy = []
     busy_coefs = []
